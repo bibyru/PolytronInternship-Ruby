@@ -42,18 +42,24 @@ public class TreeSpawner : MonoBehaviour
 
     void GrowTree()
     {
+        // The If statement below initializes an array of 'Dirt' tiles.
+
         if (dirts == null)
         {
             dirts = GameObject.FindGameObjectsWithTag("Dirt");
         }
 
+        
+
         int randomIndex = Random.Range(0, dirts.Length);
         GameObject dirt = dirts[randomIndex];
 
-
-
         int oldIndex = randomIndex;
         bool noDirtLeft = false;
+
+        // The While statement below checks if tile is occupied with house
+        // or tree.
+
         while (dirt.GetComponent<OccupationChecker>().isOccupied == true)
         {
             randomIndex++;
@@ -74,8 +80,12 @@ public class TreeSpawner : MonoBehaviour
 
 
 
+        // If there are no more 'Dirt' tiles, the script is disabled
+        // for optimization.
+
         if (noDirtLeft == true)
         {
+            Debug.Log("Tree is finished planting");
             GetComponent<TreeSpawner>().enabled = false;
         }
         else

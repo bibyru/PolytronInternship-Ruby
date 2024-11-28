@@ -19,11 +19,6 @@ public class MouseDetector : MonoBehaviour
         {
             MouseClick();
         }
-
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
     }
 
     void MouseClick()
